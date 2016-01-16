@@ -21,10 +21,10 @@ $(call inherit-product, device/oneplus/onyx/onyx.mk)
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
-# Inherit some common CM stuff.
+# Inherit some common CYANPOP stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_onyx
+PRODUCT_NAME := cyanpop_onyx
 PRODUCT_DEVICE := onyx
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_MODEL := Oneplus X
