@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# inherit from Oppo common
+-include device/oppo/common/BoardConfigCommon.mk
+
 PLATFORM_PATH := device/oneplus/onyx
 
 # Include path
@@ -42,7 +45,6 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=onyx user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
-# BOARD_CUSTOM_BOOTIMG_MK := $(PLATFORM_PATH)/mkbootimg.mk
 BOARD_KERNEL_PREBUILT_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/oneplus/onyx/dt.img
 TARGET_KERNEL_ARCH := arm
@@ -144,15 +146,13 @@ TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/oneplus/onyx/init/init_onyx.cpp
+TARGET_UNIFIED_DEVICE := true
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# Power HAL
-TARGET_POWERHAL_VARIANT := qcom
 
 # Protobuf-c
 PROTOBUF_SUPPORTED := true
@@ -192,13 +192,6 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
-# inherit from the proprietary version
-ifneq ($(QCPATH),)
--include $(QCPATH)/common/msm8974/BoardConfigVendor.mk
-
-ifeq ($(BOARD_USES_QCNE),true)
 TARGET_LDPRELOAD := libNimsWrap.so
-endif
-endif
 
 -include vendor/oneplus/onyx/BoardConfigVendor.mk
