@@ -177,11 +177,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
-# Proprietary wifi display, if available
-ifneq ($(QCPATH),)
-PRODUCT_BOOT_JARS += WfdCommon
-endif
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -293,3 +288,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Call the proprietary setup
 $(call inherit-product-if-exists, vendor/oneplus/onyx/onyx-vendor.mk)
+
+# Inherit from oppo-common
+$(call inherit-product, device/oppo/common/common.mk)
