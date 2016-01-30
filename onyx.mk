@@ -31,10 +31,6 @@ PRODUCT_PACKAGES += \
     init.onyx.bt.sh \
     init.onyx.ril.sh
 
-# Prebuilt DT
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/dt.img:dt.img
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay vendor/extra/overlays/phone-1080p
 
@@ -69,6 +65,10 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# dtbTool
+PRODUCT_PACKAGES += \
+    dtbToolONYX
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
