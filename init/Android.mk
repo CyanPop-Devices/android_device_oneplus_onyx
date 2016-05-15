@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014-2015 The CyanogenMod Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,14 +18,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := wcnss_oneplus_client.c
-
-LOCAL_C_INCLUDES += hardware/qcom/wlan/wcnss_service
-LOCAL_CFLAGS += -Wall
-
-LOCAL_SHARED_LIBRARIES := libc libcutils libutils liblog
-
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := libwcnss_qmi
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+LOCAL_SRC_FILES := init_onyx.cpp
+LOCAL_MODULE := libinit_onyx
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
